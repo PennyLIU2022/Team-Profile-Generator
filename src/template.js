@@ -25,7 +25,7 @@ const generateTeam = team => {
      <div class="card employee-card">
         <div class="card-header bg-info text-white">
             <h2 class="card-title">${engineer.getName()}</h2>
-            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${engineer.getRole()}</h3>
+            <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
         </div>
         <div class="card-body">
             <ul class="list-group">
@@ -44,7 +44,7 @@ const generateTeam = team => {
      <div class="card employee-card">
         <div class="card-header bg-info text-white">
             <h2 class="card-title">${intern.getName()}</h2>
-            <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>${intern.getRole()}</h3>
+            <h3 class="card-title"><i class="fas fa-user-graduate mr-2"></i>${intern.getRole()}</h3>
         </div>
         <div class="card-body">
             <ul class="list-group">
@@ -66,12 +66,12 @@ const generateTeam = team => {
         .map(manager => generateManager(manager))
         );
     html.push(
-        team.filter(employee => employee.getRole("Engineer"))
+        team.filter(employee => employee.getRole()==="Engineer")
         .map(engineer => generateEngineer(engineer))
         .join("")
     );
     html.push(
-        team.filter(employee => employee.getRole("Intern"))
+        team.filter(employee => employee.getRole()==="Intern")
         .map(intern => generateIntern(intern))
         .join("")
     );
@@ -88,12 +88,9 @@ module.exports = team => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-          crossorigin="anonymous"
-        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link 
          rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" 
          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" 
@@ -105,22 +102,22 @@ module.exports = team => {
     </head>
 
     <body>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 jumbotron mb-3 bg-gradient-info text-white">
-            <h1 class="text-center">My Team</h1>
-          </div>
-        </div>
-      </div> 
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-12 jumbotron mb-3 team-heading bg-info">
+                <h1 class="text-center text-white">Team Profile</h1>
+            </div>
+            </div>
+        </div> 
 
-      <div class="container">
-        <div class="row">
-            <div class="row col-12 d-flex justify-content-center">
-              ${generateTeam(team)}
+        <div class="container">
+            <div class="row">
+                <div class="row team-area col-12 d-flex justify-content-center">
+                  ${generateTeam(team)}
+                </div>
             </div>
         </div>
-      </div>
     </body>
   </html>
-    `
-}
+    `;
+};

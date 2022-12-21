@@ -4,7 +4,6 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const Manager = require("./lib/Manager");
 const dist_dir = path.resolve(__dirname, "dist");
 const distPath = path.join(dist_dir, "team.html");
 const generateTeam = require("./src/template");
@@ -21,7 +20,7 @@ function runApp(){
                 type: "list",
                 message: "Choose employee type you want to add to your team:",
                 name: "addMember",
-                choices: ["Manager", "Engineer", "Intern", "No more team members needed"],
+                choices: ["Manager", "Engineer", "Intern", "No more team members needed"]
             }]
         ).then(function (userChoice){
             switch (userChoice.addMember){
@@ -29,10 +28,10 @@ function runApp(){
                     addManager();
                     break;
                 case "Engineer":
-                    addEngineer;
+                    addEngineer();
                     break;
                 case "Intern":
-                    addIntern;
+                    addIntern();
                     break;
                 default: htmlCreator();
             }
